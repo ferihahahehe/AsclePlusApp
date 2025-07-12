@@ -111,28 +111,22 @@ class _DynamicBarChartState extends State<DynamicBarChart> {
               );
             },
           ),
-          // --- [AWAL] PERUBAHAN UTAMA PADA PADDING ---
           titlesData: FlTitlesData(
             show: true,
-            // Padding Kanan
             rightTitles: AxisTitles(
               sideTitles: SideTitles(
                 showTitles: true,
-                reservedSize: 36, // Samakan dengan sisi kiri
-                getTitlesWidget: (value, meta) =>
-                    Container(), // Tidak menampilkan teks
+                reservedSize: 36,
+                getTitlesWidget: (value, meta) => Container(),
               ),
             ),
-            // Padding Atas
             topTitles: AxisTitles(
               sideTitles: SideTitles(
                 showTitles: true,
-                reservedSize: 28, // Beri sedikit ruang di atas
-                getTitlesWidget: (value, meta) =>
-                    Container(), // Tidak menampilkan teks
+                reservedSize: 28,
+                getTitlesWidget: (value, meta) => Container(),
               ),
             ),
-            // Padding Bawah
             bottomTitles: AxisTitles(
               sideTitles: SideTitles(
                 showTitles: true,
@@ -143,7 +137,8 @@ class _DynamicBarChartState extends State<DynamicBarChart> {
                       axisSide: meta.axisSide,
                       space: 8.0,
                       child: Text(
-                        widget.xLabels[index],
+                        widget.xLabels[index].replaceAll(' ', '\n'),
+                        textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).labelSmall.override(
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.bold,
@@ -153,10 +148,9 @@ class _DynamicBarChartState extends State<DynamicBarChart> {
                   }
                   return Text('');
                 },
-                reservedSize: 36, // Samakan dengan sisi kiri
+                reservedSize: 36,
               ),
             ),
-            // Padding Kiri
             leftTitles: AxisTitles(
               sideTitles: SideTitles(
                 showTitles: true,
@@ -177,7 +171,6 @@ class _DynamicBarChartState extends State<DynamicBarChart> {
               ),
             ),
           ),
-          // --- [AKHIR] PERUBAHAN UTAMA PADA PADDING ---
           borderData: FlBorderData(
             show: true,
             border: Border(
